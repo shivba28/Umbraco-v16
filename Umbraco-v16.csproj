@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <PackageReference Include="Our.Umbraco.FullTextSearch" Version="5.0.0" />
-    <PackageReference Include="SeoToolkit.Umbraco" Version="5.0.2" />
     <PackageReference Include="Skybrud.Umbraco.Redirects" Version="16.0.0" />
     <PackageReference Include="Umbraco.Cms" Version="16.1.1" />
     <PackageReference Include="uSync" Version="16.0.2" />
