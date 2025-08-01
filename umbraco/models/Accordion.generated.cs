@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Accordion</summary>
 	[PublishedModel("accordion")]
-	public partial class Accordion : PublishedElementModel
+	public partial class Accordion : PublishedElementModel, IBaseContent
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -63,7 +63,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("heading")]
-		public virtual string Heading => this.Value<string>(_publishedValueFallback, "heading");
+		public virtual string Heading => global::Umbraco.Cms.Web.Common.PublishedModels.BaseContent.GetHeading(this, _publishedValueFallback);
 
 		///<summary>
 		/// Preheading
@@ -71,7 +71,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("preheading")]
-		public virtual string Preheading => this.Value<string>(_publishedValueFallback, "preheading");
+		public virtual string Preheading => global::Umbraco.Cms.Web.Common.PublishedModels.BaseContent.GetPreheading(this, _publishedValueFallback);
 
 		///<summary>
 		/// Text
@@ -79,6 +79,6 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("text")]
-		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString Text => this.Value<global::Umbraco.Cms.Core.Strings.IHtmlEncodedString>(_publishedValueFallback, "text");
+		public virtual global::Umbraco.Cms.Core.Strings.IHtmlEncodedString Text => global::Umbraco.Cms.Web.Common.PublishedModels.BaseContent.GetText(this, _publishedValueFallback);
 	}
 }

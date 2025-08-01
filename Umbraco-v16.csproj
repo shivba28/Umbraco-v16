@@ -12,6 +12,7 @@
     <PackageReference Include="Skybrud.Umbraco.Redirects" Version="16.0.0" />
     <PackageReference Include="Umbraco.Cms" Version="16.1.1" />
     <PackageReference Include="uSync" Version="16.0.2" />
+    <PackageReference Include="Umbraco.Community.Contentment" Version="6.0.0-alpha008" />
   </ItemGroup>
 
   <ItemGroup>

@@ -20,7 +20,7 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 {
 	/// <summary>Accordion Settings</summary>
 	[PublishedModel("accordionSettings")]
-	public partial class AccordionSettings : PublishedElementModel
+	public partial class AccordionSettings : PublishedElementModel, IBaseAdvancedSettings, IBaseAppearanceSettings
 	{
 		// helpers
 #pragma warning disable 0109 // new is redundant
@@ -50,12 +50,18 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
-		/// Backoffice Alias/Name
+		/// Item Prefix: Add Q/A prefix label to each
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("alias")]
-		public virtual string Alias => this.Value<string>(_publishedValueFallback, "alias");
+		[ImplementPropertyType("itemPrefix")]
+		public virtual bool ItemPrefix => this.Value<bool>(_publishedValueFallback, "itemPrefix");
+
+		///<summary>
+		/// Show First Item: Automatically expand the first item.
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
+		[ImplementPropertyType("showFirstItem")]
+		public virtual bool ShowFirstItem => this.Value<bool>(_publishedValueFallback, "showFirstItem");
 
 		///<summary>
 		/// Anchor ID
@@ -63,22 +69,14 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("anchorId")]
-		public virtual string AnchorId => this.Value<string>(_publishedValueFallback, "anchorId");
+		public virtual string AnchorId => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAdvancedSettings.GetAnchorId(this, _publishedValueFallback);
 
 		///<summary>
-		/// Background Color
-		///</summary>
-		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
-		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
-		[ImplementPropertyType("backgroundColor")]
-		public virtual string BackgroundColor => this.Value<string>(_publishedValueFallback, "backgroundColor");
-
-		///<summary>
-		/// Block Visibility
+		/// Block Visibility: Prevent this block to from showing up on a webpage.
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
 		[ImplementPropertyType("blockVisibility")]
-		public virtual bool BlockVisibility => this.Value<bool>(_publishedValueFallback, "blockVisibility");
+		public virtual bool BlockVisibility => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAdvancedSettings.GetBlockVisibility(this, _publishedValueFallback);
 
 		///<summary>
 		/// Classnames
@@ -86,6 +84,60 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
 		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
 		[ImplementPropertyType("classnames")]
-		public virtual global::System.Collections.Generic.IEnumerable<string> Classnames => this.Value<global::System.Collections.Generic.IEnumerable<string>>(_publishedValueFallback, "classnames");
+		public virtual global::System.Collections.Generic.IEnumerable<string> Classnames => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAdvancedSettings.GetClassnames(this, _publishedValueFallback);
+
+		///<summary>
+		/// Backoffice Alias/Name
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("alias")]
+		public virtual string Alias => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAppearanceSettings.GetAlias(this, _publishedValueFallback);
+
+		///<summary>
+		/// Background Color
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("backgroundColor")]
+		public virtual string BackgroundColor => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAppearanceSettings.GetBackgroundColor(this, _publishedValueFallback);
+
+		///<summary>
+		/// Block Style
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("blockStyle")]
+		public virtual string BlockStyle => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAppearanceSettings.GetBlockStyle(this, _publishedValueFallback);
+
+		///<summary>
+		/// Center Heading
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
+		[ImplementPropertyType("centerHeading")]
+		public virtual bool CenterHeading => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAppearanceSettings.GetCenterHeading(this, _publishedValueFallback);
+
+		///<summary>
+		/// Container Width
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("containerWidth")]
+		public virtual string ContainerWidth => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAppearanceSettings.GetContainerWidth(this, _publishedValueFallback);
+
+		///<summary>
+		/// Show Top Border
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
+		[ImplementPropertyType("showTopBorder")]
+		public virtual bool ShowTopBorder => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAppearanceSettings.GetShowTopBorder(this, _publishedValueFallback);
+
+		///<summary>
+		/// Vertical Spacing
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "16.1.1+7e82c25")]
+		[global::System.Diagnostics.CodeAnalysis.MaybeNull]
+		[ImplementPropertyType("verticalSpacing")]
+		public virtual string VerticalSpacing => global::Umbraco.Cms.Web.Common.PublishedModels.BaseAppearanceSettings.GetVerticalSpacing(this, _publishedValueFallback);
 	}
 }
