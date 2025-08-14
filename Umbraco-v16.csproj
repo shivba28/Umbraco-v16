@@ -13,6 +13,7 @@
     <PackageReference Include="Umbraco.Cms" Version="16.1.1" />
     <PackageReference Include="uSync" Version="16.0.2" />
     <PackageReference Include="Umbraco.Community.Contentment" Version="6.0.0-alpha008" />
+    <PackageReference Include="Our.Umbraco.ConditionalDisplayers" Version="16.0.0-alpha1" />
   </ItemGroup>
 
   <ItemGroup>
