@@ -1,0 +1,29 @@
+﻿@using Umbraco.Cms.Core.Models;
+@using Microsoft.AspNetCore.Html;
+@inherits Umbraco.Cms.Web.Common.Views.UmbracoViewPage;
+@using ContentModels = Umbraco.Cms.Web.Common.PublishedModels;
+@using Umbraco.Cms.Core.Blocks;
+@using Umbraco.Cms.Core.Models.Blocks
+@{
+    Layout = null;
+    // var blocks = Model.Value<IEnumerable<BlockListItem>>("Blocks");
+    var indexNumberResult = this.ViewData.ContainsKey("indexNumber") ? Model.SortOrder.ToString() : string.Empty;
+    var useIndexNumber = int.TryParse(indexNumberResult, out int indexNumber);
+    var blocks = Model.Value<IEnumerable<BlockListItem>>("Blocks");
+
+    //@Html.GetBlockListHtml(Model, "Blocks");
+}
+
+ @if (blocks != null)
+{
+    int index = useIndexNumber ? indexNumber : 0;
+   
+    foreach (var block in blocks)
+    {
+        var content = block.Content;
+        @await Html.PartialAsync("Widgets/" + content.ContentType.Alias, block)
+        index++;
+
+        
+    }
+}
