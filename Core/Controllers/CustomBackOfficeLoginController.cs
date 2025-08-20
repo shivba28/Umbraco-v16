@@ -25,12 +25,20 @@ namespace UmbracoV16.Core.Controllers
         [HttpGet]
         public IActionResult Login(string? returnUrl = null)
         {
-            var backOfficeUser = _backOfficeSecurity.CurrentUser.IsApproved;
-            Console.WriteLine("backofficeuser: " + backOfficeUser);
-
-            if (backOfficeUser)
+            try
             {
-                return Redirect("/umbraco"); // Already logged in
+                // Check if user is authenticated and approved
+                var currentUser = _backOfficeSecurity.CurrentUser;
+                if (currentUser != null && currentUser.IsApproved)
+                {
+                    _logger.LogInformation("User is already authenticated, redirecting to backoffice");
+                    return Redirect("/umbraco"); // Already logged in
+                }
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Error checking authentication status in login page");
+                // Continue to show login page if there's an error
             }
             ViewData["ReturnUrl"] = returnUrl;
             ViewData["Title"] = "GGUSD - Admin Login"; // Custom title
@@ -93,12 +101,5 @@ namespace UmbracoV16.Core.Controllers
             }
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Logout()
-        {
-            await _signInManager.SignOutAsync();
-            _logger.LogInformation("User logged out.");
-            return Redirect("/admin");
-        }
     }
 }
