@@ -6,10 +6,12 @@ builder.CreateUmbracoBuilder()
     .AddComposers()
     .Build();
 
+// Add MVC services for custom controllers
+builder.Services.AddControllersWithViews();
+
 WebApplication app = builder.Build();
 
 await app.BootUmbracoAsync();
-
 
 app.UseUmbraco()
     .WithMiddleware(u =>
